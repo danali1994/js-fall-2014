@@ -4,34 +4,42 @@
       <meta charset="utf-8">
       <title>Homework</title>
       <style>
-
           #rect {
-              position: relative;
-              top: 50px;
-              left: 50px;
-              width: 100px;
-              height: 100px;
-              background: #fee;
-              -webkit-transition: left .5s;
+            position: relative;
+            top: 50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            background: #fee;
+            -webkit-transition: left .5s;
           }
 
           .bordered {
-              border: 2px solid #dcc;
+            border: 2px solid #dcc;
           }
 
           #rect.lefty {
-              left: 200px;
+            left: 200px;
+            opacity: .3;
           }
-
       </style>
     </head>
+    
     <body>
-
         <div id="rect"></div>
 
         <script>
-            // Your work goes here.
-        </script>
+          var myRect = document.getElementById('rect');
+            myRect.classList.add('bordered');
 
+          var leftyClickHandler = function(e) {
+            if (e.currentTarget.classList.contains('lefty')) { 
+              e.currentTarget.classList.remove('lefty');
+              } else {
+              e.currentTarget.classList.add('lefty');
+              }
+            };
+            myRect.addEventListener('click', leftyClickHandler);
+        </script>
     </body>
 </html>
