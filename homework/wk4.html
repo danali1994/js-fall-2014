@@ -1,1 +1,67 @@
-week 4 homework
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Homework</title>
+
+      <style>
+        body {
+          background-color: white;
+        }
+
+        .yes{
+          background-color: #CCCCFF;
+        }
+
+        .no{
+          background-color: #663300;
+        }
+
+      </style>
+   
+    </head>
+    
+    <body>
+      <script>
+
+          for (var i = 1; i <= 1000; i++) {
+            console.log(i);
+          }
+
+          var answer = prompt("Do you like the color periwinkle?");
+
+          if (answer == "yes") {
+            document.body.classList.add('yes');
+          } else {
+            document.body.classList.add('no');
+          }
+
+          // FizzBuzz
+
+          for (var i = 1; i <= 100; i++) {
+            
+            if (i % 3 == 0 && i % 5 > 0) {
+              console.log("Fizz");
+            } else if 
+              (i % 5 == 0 && i % 3 > 0) {
+              console.log("Buzz");
+            } else if 
+              (i % 5 == 0 && i % 3 == 0) {
+              console.log("FizzBuzz");
+            } else {
+                console.log(i);
+              }
+          }
+
+          // Lottery Number
+          
+          var max = prompt("What would you like the max number to be?");
+          var amount = prompt("How many numbers do you want?");
+
+          for ( var i = 0; i < amount; i++) {          
+            console.log(Math.round(Math.random()*max)); 
+          }
+
+      </script>
+    </body>
+</html>
