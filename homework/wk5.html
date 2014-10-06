@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery.js"></script>
+    <title>Dana's Homework</title>
+	<style type="text/css">
+		
+		body { 
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 1.8em;
+			padding: 0;
+			margin: 0; 
+		}
+		
+		body, html {
+		  	height: 100%;
+		  	width: 100%;
+		  	overflow: hidden;
+		}
+
+		textarea {
+
+		}
+		
+		textarea#content {
+		  float: left;
+		  width: 95%;
+		  height: 95%;
+		  font-size: 1em;
+		  resize: none;
+		  padding: 40px;
+		  line-height: 1.3em;
+		  border: none;
+		  outline: none;
+		  margin: 0;
+		}
+
+		#container {
+			font-size: 20px;
+			color: white;
+			background: red;
+			width: 110px;
+			border: 1px solid;
+			padding: 10px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="container">CLEAR ALL</div>
+	<textarea type="text" id="content" placeholder="" autofocus="true" style="width: 1339px;","height: 1339px;"></textarea>
+	<script>
+
+	function resizeBox() {
+    	var windowWidth = $(window).width() - 1;
+    	$('#content').css('width', windowWidth);
+
+    	var windowHeight = $(window).height() -1;
+    	$('#content').css('height', windowHeight);
+	}
+
+	$(function() {
+
+  		resizeBox();
+  
+  	$(window).resize(resizeBox);
+
+  	$('#content').val(localStorage.content);
+
+  	$('#content').on( "keyup", function() {
+    	var content = $('#content').val();
+    	localStorage.content = content;
+  	});
+
+  	$('#container').on("click", function() {
+  		localStorage.removeItem('content');
+
+  		location.reload();
+  	})
+
+	});
+
+
+</script>
+
+</body>
+</html>
