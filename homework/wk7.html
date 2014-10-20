@@ -1,0 +1,49 @@
+<body>
+    <ul id="list"></ul>
+
+    <script id="movie-tpl" type="text/template">
+        {{#picks}}
+        <div>
+            <h1>
+                <a href="{{link.url}}">{{display_title}}</a>
+            </h1>
+            {{{summary_short}}}
+        </div>
+        {{/picks}}
+    </script>
+
+    <script src="mustache.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+
+    var movieTpl = $('#movie-tpl').html();
+
+    var criticPicks = function(results) {
+        var picks = [];
+
+        for (var i = 0; i < results.length; i++) {
+            picks.push(results[i]);
+        }
+        return picks;
+    }
+
+    var renderpicks = function(results) {
+        var picks = criticPicks(results);
+        var pickHtml = Mustache.render(movieTpl, {picks: picks});
+        var pickDom = $(pickHtml);
+        $('#list').append(pickDom);
+    }
+
+    $.ajax({
+        url: 'http://api.nytimes.com/svc/movies/v2/reviews/picks.jsonp',
+        data: {
+            'api-key': '936e8811e16590a4748d4d56770601cc:8:70029533'
+        },
+        dataType: 'jsonp',
+        success: function(response) {
+            renderpicks(response.results);
+        }
+    });
+    console.log('Script done');
+    </script>
+</body>
